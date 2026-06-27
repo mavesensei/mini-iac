@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mini-iac"
+version = "0.1.0"
+description = "A Terraform-inspired IaC engine for Docker"
+requires-python = ">=3.11"
+dependencies = [
+    "typer>=0.12",
+    "rich>=13",
+    "pydantic>=2",
+    "pyyaml>=6",
+    "docker>=7",
+]
+
+[project.scripts]
+iac = "mini_iac.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mini_iac"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-m 'not integration'"
+markers = [
+    "integration: marks tests requiring a live Docker daemon",
+]

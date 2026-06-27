@@ -1,0 +1,13 @@
+containers:
+  - name: slow-health-web
+    image: nginx:1.27
+    ports:
+      - "8093:80"
+    health_check:
+      path: /
+      port: 8093
+      retries: 5
+      interval_seconds: 5
+
+network:
+  name: health-net

@@ -1,0 +1,5 @@
+containers:
+  - name: db-with-var
+    image: postgres:16
+    env:
+      POSTGRES_PASSWORD: "${DB_PASSWORD}"

@@ -1,0 +1,13 @@
+containers:
+  - name: healthy-web
+    image: nginx:1.27
+    ports:
+      - "8090:80"
+    health_check:
+      path: /
+      port: 8090
+      retries: 5
+      interval_seconds: 2
+
+network:
+  name: health-net

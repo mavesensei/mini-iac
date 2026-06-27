@@ -1,0 +1,13 @@
+containers:
+  - name: unhealthy-web
+    image: nginx:1.27
+    ports:
+      - "8091:80"
+    health_check:
+      path: /does-not-exist
+      port: 8091
+      retries: 3
+      interval_seconds: 1
+
+network:
+  name: health-net

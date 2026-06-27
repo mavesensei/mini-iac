@@ -1,0 +1,8 @@
+containers:
+  - name: good-container
+    image: nginx:1.27
+    ports:
+      - "8092:80"
+
+  - name: bad-container
+    image: this-image-does-not-exist-anywhere:latest
